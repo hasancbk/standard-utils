@@ -2,7 +2,7 @@ using StandardUtils.Models.Shared;
 
 namespace StandardUtils.Models.Requests
 {
-    public abstract class BaseAuthenticatedPagedRequest : BaseAuthenticatedRequest
+    public abstract class BasePagedRequest : BaseRequest
     {
         /// <summary>
         /// if skip is greater than 0
@@ -11,7 +11,7 @@ namespace StandardUtils.Models.Requests
         /// </summary>
         public PagingInfo PagingInfo { get; }
 
-        protected BaseAuthenticatedPagedRequest(long currentUserId) : base(currentUserId)
+        protected BasePagedRequest()
         {
             PagingInfo = new PagingInfo();
         }

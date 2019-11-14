@@ -4,7 +4,7 @@ namespace StandardUtils.Models.Shared
 {
     public abstract class BaseCurrentUser
     {
-        public BaseCurrentUser Organization { get; set; }
+        public BaseCurrentOrganization Organization { get; set; }
         
         public long Id { get; set; }
         public Guid Uid { get; set; }
