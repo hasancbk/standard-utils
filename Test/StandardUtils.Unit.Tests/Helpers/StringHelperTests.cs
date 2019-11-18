@@ -1,8 +1,7 @@
 using NUnit.Framework;
-
 using StandardUtils.Helpers;
 
-namespace StandardUtils.Unit.Tests
+namespace StandardUtils.Unit.Tests.Helpers
 {
     [TestFixture]
     public class StringHelperTests
