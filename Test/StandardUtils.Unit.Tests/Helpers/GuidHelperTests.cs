@@ -1,5 +1,6 @@
 using System;
 using NUnit.Framework;
+using Shouldly;
 using StandardUtils.Helpers;
 
 namespace StandardUtils.Unit.Tests.Helpers
@@ -55,6 +56,12 @@ namespace StandardUtils.Unit.Tests.Helpers
 
             var otherItem = Guid.NewGuid();
             Assert.True(otherItem.IsNotEmptyGuid());
+        }
+        
+        [TestCase("97bb402f-3cd6-4882-a8ab-d745ef683825", "97bb402f3cd64882a8abd745ef683825")]
+        public void GuidHelper_ToUidString(Guid guid, string result)
+        {
+            guid.ToUidString().ShouldBe(result);
         }
     }
 }
