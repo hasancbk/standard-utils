@@ -61,6 +61,20 @@ namespace StandardUtils.Unit.Tests.Helpers
         {
             Assert.True(text.IsNotEmpty());
         }
+        
+        [TestCase("TRUE")]
+        [TestCase("1")]
+        public void StringHelper_IsTrue(string text)
+        {
+            Assert.True(text.IsTrue());
+        }
+        
+        [TestCase("")]
+        [TestCase("test")]
+        public void StringHelper_IsFalse(string text)
+        {
+            Assert.True(text.IsFalse());
+        }
 
         [TestCase("http://www.google.com")]
         [TestCase("https://hype.games/")]
@@ -78,5 +92,7 @@ namespace StandardUtils.Unit.Tests.Helpers
         {
             Assert.True(text.IsNotUrl());
         }
+        
+        
     }
 }
