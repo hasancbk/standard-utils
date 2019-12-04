@@ -58,10 +58,11 @@ namespace StandardUtils.Unit.Tests.Helpers
             Assert.True(otherItem.IsNotEmptyGuid());
         }
         
-        [TestCase("97bb402f-3cd6-4882-a8ab-d745ef683825", "97bb402f3cd64882a8abd745ef683825")]
-        public void GuidHelper_ToUidString(Guid guid, string result)
+        [Test]
+        public void GuidHelper_ToUidString()
         {
-            guid.ToUidString().ShouldBe(result);
+            var item = new Guid("97bb402f-3cd6-4882-a8ab-d745ef683825");
+            item.ToUidString().ShouldBe("97bb402f3cd64882a8abd745ef683825");
         }
     }
 }
