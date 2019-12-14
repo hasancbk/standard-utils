@@ -1,10 +1,9 @@
 using System;
-
 using NUnit.Framework;
-
+using Shouldly;
 using StandardUtils.Helpers;
 
-namespace StandardUtils.Unit.Tests
+namespace StandardUtils.Unit.Tests.Helpers
 {
     [TestFixture]
     public class GuidHelperTests
@@ -57,6 +56,13 @@ namespace StandardUtils.Unit.Tests
 
             var otherItem = Guid.NewGuid();
             Assert.True(otherItem.IsNotEmptyGuid());
+        }
+        
+        [Test]
+        public void GuidHelper_ToUidString()
+        {
+            var item = new Guid("97bb402f-3cd6-4882-a8ab-d745ef683825");
+            item.ToUidString().ShouldBe("97bb402f3cd64882a8abd745ef683825");
         }
     }
 }

@@ -1,12 +1,11 @@
 using System;
 
 using NUnit.Framework;
-
 using StandardUtils.Helpers;
 
-namespace StandardUtils.Unit.Tests
+namespace StandardUtils.Unit.Tests.Helpers
 {
-   [TestFixture]
+    [TestFixture]
     public class CryptoHelperTests
     {
         [Test]
@@ -96,6 +95,34 @@ namespace StandardUtils.Unit.Tests
             Assert.IsNotEmpty(result);
             Assert.IsAssignableFrom<string>(result);
         }
+        
+        [Test]
+        public void CryptoHelper_GetKeyAsString()
+        {
+            // arrange
+            var helper = GetCryptoHelper();
+
+            // act
+            var result = helper.GetKeyAsString();
+
+            // assert
+            Assert.IsNotEmpty(result);
+            Assert.IsAssignableFrom<string>(result);
+        }
+                
+        [Test]
+        public void CryptoHelper_GetIVAsString()
+        {
+            // arrange
+            var helper = GetCryptoHelper();
+
+            // act
+            var result = helper.GetIVAsString();
+
+            // assert
+            Assert.IsNotEmpty(result);
+            Assert.IsAssignableFrom<string>(result);
+        }
 
         [Test]
         public void CryptoHelper_ConvertToString()
@@ -168,6 +195,47 @@ namespace StandardUtils.Unit.Tests
                 // assert
                 Assert.AreEqual(plainText, decrypted);
             }
+        }
+
+        [Test]
+        public void CryptoHelper_Encrypt_TextNull()
+        {
+            // arrange
+            var helper = GetCryptoHelper();
+
+            var key = helper.GetKey();
+            var iv = helper.GetIV();
+
+            // act // assert
+            Assert.Throws<ArgumentNullException>(() => helper.Encrypt(null, key, iv));
+        }
+        
+        [Test]
+        public void CryptoHelper_Encrypt_KeyNull()
+        {
+            // arrange
+            var helper = GetCryptoHelper();
+
+            var key = helper.GetKey();
+            var iv = helper.GetIV();
+            const string plainText = "plain test string çöşiğü +?-*^#@€£";
+
+            // act // assert
+            Assert.Throws<ArgumentNullException>(() => helper.Encrypt(plainText, null, iv));
+        }
+                
+        [Test]
+        public void CryptoHelper_Encrypt_ivNull()
+        {
+            // arrange
+            var helper = GetCryptoHelper();
+
+            var key = helper.GetKey();
+            var iv = helper.GetIV();
+            const string plainText = "plain test string çöşiğü +?-*^#@€£";
+
+            // act // assert
+            Assert.Throws<ArgumentNullException>(() => helper.Encrypt(plainText, key, null));
         }
 
         private static CryptoHelper GetCryptoHelper()
